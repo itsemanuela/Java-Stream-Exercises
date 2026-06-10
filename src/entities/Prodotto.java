@@ -33,11 +33,12 @@ this.prezzo = prezzo;
 
     @Override
     public String toString() {
-        return "Prodotto{" +
-                "id=" + id +
-                ", nome='" + nome + '\'' +
-                ", categoria='" + categoria + '\'' +
-                ", prezzo=" + prezzo +
-                '}';
+        final StringBuilder sb = new StringBuilder("Prodotto{");
+        sb.append("id=").append(id);
+        sb.append(", nome='").append(nome).append('\'');
+        sb.append(", categoria='").append(categoria).append('\'');
+        sb.append(", prezzo=").append(prezzo);
+        sb.append('}');
+        return sb.toString();
     }
 }

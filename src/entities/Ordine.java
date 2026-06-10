@@ -12,7 +12,7 @@ public class Ordine {
     private Cliente cliente;
 
     //costruttore ordine
-    public Ordine(Long id, String nome, LocalDate dataOrdine, LocalDate dataSpedizione) {
+    public Ordine(Long id, String status, LocalDate dataOrdine, LocalDate dataSpedizione, List<Prodotto> prodotti, Cliente cliente) {
         this.id=id;
         this.status=status;
         this.dataOrdine=dataOrdine;
@@ -43,13 +43,22 @@ public class Ordine {
 
     @Override
     public String toString() {
-        return "Ordine{" +
-                "id=" + id +
-                ", status='" + status + '\'' +
-                ", dataOrdine=" + dataOrdine +
-                ", dataSpedizione=" + dataSpedizione +
-                ", prodotti=" + prodotti +
-                ", cliente=" + cliente +
-                '}';
+        final StringBuilder sb = new StringBuilder("Ordine{\n");
+
+        sb.append("id=").append(id).append("\n");
+        sb.append("status='").append(status).append("'\n");
+        sb.append("dataOrdine=").append(dataOrdine).append("\n");
+        sb.append("dataSpedizione=").append(dataSpedizione).append("\n");
+
+        sb.append("prodotti=\n");
+        for (Prodotto p : prodotti) {
+            sb.append("   - ").append(p).append("\n");
+        }
+
+        sb.append("cliente=").append(cliente).append("\n");
+        sb.append("}");
+
+        return sb.toString();
     }
+
 }

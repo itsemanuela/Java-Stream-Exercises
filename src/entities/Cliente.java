@@ -27,10 +27,11 @@ public int getTier() {return tier;}
 
     @Override
     public String toString() {
-        return "Cliente{" +
-                "id=" + id +
-                ", nome='" + nome + '\'' +
-                ", tier=" + tier +
-                '}';
+        final StringBuilder sb = new StringBuilder("Cliente{");
+        sb.append("id=").append(id);
+        sb.append(", nome='").append(nome).append('\'');
+        sb.append(", tier=").append(tier);
+        sb.append('}');
+        return sb.toString();
     }
 }
