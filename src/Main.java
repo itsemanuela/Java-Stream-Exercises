@@ -25,9 +25,9 @@ Prodotto libro5= new Prodotto (3456789L, "React Advanced", "Informatica", 115.50
 
 
         //Catalogo boy
-        Prodotto boy1=new Prodotto(24484L, "Fumetto", "Adolescenza" , 14.50);
-        Prodotto boy2= new Prodotto(23456345L, "Profumo", "Accessori", 150.70);
-        Prodotto boy3=new Prodotto(23456L, "Giacca Denim", "Abbigliamento", 128.80);
+        Prodotto boy1=new Prodotto(24484L, "Fumetto", "boy" , 14.50);
+        Prodotto boy2= new Prodotto(23456345L, "Profumo", "boy", 150.70);
+        Prodotto boy3=new Prodotto(23456L, "Giacca Denim", "boy", 128.80);
 
 
 //Creazione dei clienti
@@ -67,6 +67,26 @@ System.out.println(libriCostosi);
         System.out.println("ORDINI CON ALMENO UNA CATEGORIA BABY");
         System.out.println(ordiniBaby);
 
+
+
+
+        //Categoria Boy
+            //mi creo lista di prodotti boy
+            List<Prodotto> boyProdotto= List.of(boy1, boy2, boy3);
+            //per ogni prod applico sconto e ritorno una lista trasformata quindi coon mtodo map.
+            List<Prodotto> boySconto= boyProdotto.stream().filter(prodotto -> prodotto.getCategoria().equals("boy"))
+                    .map(prodottoBoy -> new Prodotto(
+                            prodottoBoy.getId(),
+                            prodottoBoy.getNome(),
+                            prodottoBoy.getCategoria(),
+                            prodottoBoy.getPrezzo() *0.9
+                    ) ).toList();
+
+            //ho letto la categoria, con equals ho controllato se c'era la parola boy nella categoria, ho chiuso lo stream col toList e ho stampato i prodotti da ragazzo scontati.
+
+
+            System.out.println("*++++++++++++++++BOY PRODUCTS SCONTATI DEL 10%*****************************");
+            System.out.println(boySconto);
 
 }
 
