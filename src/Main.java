@@ -52,7 +52,7 @@ Prodotto libro5= new Prodotto (3456789L, "React Advanced", "Informatica", 115.50
 List<Prodotto> catalogoLibri = List.of(libro1, libro2, libro3, libro4, libro5);
 List<Prodotto> libriCostosi= catalogoLibri.stream().filter(libro ->libro.getPrezzo() > 100).toList(); //chiudo lo stream con toList infatti mi stampa solo lista dei libri costosi.
             System.out.println("********************LIBRI COSTOSI**************************");
-System.out.println(libriCostosi);
+libriCostosi.forEach(System.out::println);
 
 
 //lista di ORDINI categoria baby
@@ -65,7 +65,7 @@ System.out.println(libriCostosi);
                         .stream().anyMatch(prodotto -> prodotto.getCategoria().equals("baby"))).toList();
             System.out.println("************************************************************************");
         System.out.println("ORDINI CON ALMENO UNA CATEGORIA BABY");
-        System.out.println(ordiniBaby);
+       ordiniBaby.forEach(System.out::println);
 
 
 
@@ -86,7 +86,7 @@ System.out.println(libriCostosi);
 
 
             System.out.println("*++++++++++++++++BOY PRODUCTS SCONTATI DEL 10%*****************************");
-            System.out.println(boySconto);
+          boyProdotto.forEach(System.out::println);
 
 }
 
