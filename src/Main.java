@@ -1,7 +1,6 @@
 import entities.Prodotto;
 import entities.Cliente;
 import entities.Ordine;
-
 import java.time.LocalDate;
 import java.util.List;
 
@@ -20,8 +19,8 @@ Prodotto libro5= new Prodotto (3456789L, "React Advanced", "Informatica", 115.50
 // Catalogo baby
 
         Prodotto baby1= new Prodotto(344583L, "Pannolini", "baby", 11.00);
-        Prodotto baby2= new Prodotto(239485L, "Omogeneizzato", "Cibo", 3.80);
-        Prodotto baby3= new Prodotto(458396L, "Triciclo", "Giocattolo", 268.60);
+        Prodotto baby2= new Prodotto(239485L, "Pastina", "baby", 3.80);
+        Prodotto baby3= new Prodotto(458396L, "Triciclo", "baby", 268.60);
 
 
 
@@ -46,6 +45,36 @@ Prodotto libro5= new Prodotto (3456789L, "React Advanced", "Informatica", 115.50
         Ordine ordine2= new Ordine(763948L, "ORDINATO", LocalDate.of(2026, 3, 12), LocalDate.of(2026, 1, 3), List.of(libro2, libro5, boy3,baby1), cliente5);
         System.out.println(ordine2 );
 
+        Ordine ordine3= new Ordine(764335L, "COMPLETATO", LocalDate.of(2026, 6, 10), LocalDate.of(2026, 6, 12), List.of(boy2, libro2), cliente4);
 
-   }
+
+        //STREAM per la prima lista di libri sopra ai 100, avvio lo stream, filtro e poi li inserisco in una lista
+List<Prodotto> catalogoLibri = List.of(libro1, libro2, libro3, libro4, libro5);
+List<Prodotto> libriCostosi= catalogoLibri.stream().filter(libro ->libro.getPrezzo() > 100).toList(); //chiudo lo stream con toList infatti mi stampa solo lista dei libri costosi.
+            System.out.println("********************LIBRI COSTOSI**************************");
+System.out.println(libriCostosi);
+
+
+//lista di ORDINI categoria baby
+
+        List<Ordine> ordiniBaby= List.of(ordine1, ordine2, ordine3)
+                //prima mi controllo gli ordini
+                //Avvio lo stream e filtro gli ordini, mi leggo i prodotti, entro nel catologo dei prodotti
+                .stream().filter(ord-> ord.getProdotti()
+                        //secondo stream controllo se almeno un prodotto ha la categoria baby e con toList chiudo lo stream e stampo gli ordini baby.
+                        .stream().anyMatch(prodotto -> prodotto.getCategoria().equals("baby"))).toList();
+            System.out.println("************************************************************************");
+        System.out.println("ORDINI CON ALMENO UNA CATEGORIA BABY");
+        System.out.println(ordiniBaby);
+
+
 }
+
+}
+
+
+
+
+
+
+
